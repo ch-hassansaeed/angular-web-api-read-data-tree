@@ -1,0 +1,92 @@
+﻿<style>
+#google_icon
+{
+float: left;
+}
+#apple_icon
+{
+    float: left;
+    margin-top: -17px;
+}
+.float_left_cls
+{
+    float: left;  
+}
+.label-checkbox100 {
+    font-family: Raleway-Regular;
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.2;
+   
+  
+    padding-left: 26px;
+    cursor: pointer;
+}
+.input-checkbox100 {
+    font-family: Raleway-Regular;
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.2;
+   
+    margin-left: 10px;
+    padding-left: 26px;
+    cursor: pointer;
+}
+</style>
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+        Username: test<br />
+        Password: test
+    </div>
+    <div class="card">
+        <h4 class="card-header">Welcome To Do Join</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="float_left_cls">
+        <label for="remember-me" class="label-checkbox100">Remember me</label>
+        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+    </div>
+    <div class="float_left_cls">
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Forget Password</a>
+    </div>
+</div>
+
+<div class="col-md-6 offset-md-3 mt-5" style="clear: both;">
+<hr>
+</div>
+
+
+<div class="col-md-6 offset-md-3 mt-5">
+    <div id="google_icon">
+        <img src="https://miro.medium.com/max/4000/1*OIIv4FEjJQMqh-zEPhtlYA.png"width="225px" >
+    </div>
+    <div id="apple_icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQwRYLesvjGX5_Fh2jnnLMkIyRFN0pwQXtRqQ&usqp=CAU"width="255px" >
+    </div>
+</div>

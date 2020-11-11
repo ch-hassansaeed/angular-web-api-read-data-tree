@@ -1,0 +1,85 @@
+﻿
+<style>
+#expend_arrow
+{
+font-weight: bolder;
+font-size: 20px;
+cursor: pointer;
+}
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
+<div class="card mt-4">
+    <h4 class="card-header">You're logged in Do Join !</h4>
+    <div class="card-body">
+        <h6>Select Your Service Category & Profession</h6>
+       
+
+
+        <ul id="myUL">
+            <li *ngFor="let itemParent of category_items | keyvalue" >
+                <span class="caret" #refEl (click)='parent_click(refEl)'>{{itemParent.value["title"]}}</span>
+                
+                    <ul class="nested">
+                        <li *ngFor="let sub_item of itemParent.value['subCategories'] | keyvalue">
+                                       {{sub_item.value["title"]}}
+                        </li>  
+                    </ul> 
+                     
+                    </li>
+                </ul>
+         
+         
+
+  
+    </div>
+</div>
+
+
+<!-- <div *ngFor="let cat of category_items" style="text-align:center">
+    <h3>
+       {{ cat }}
+     </h3>
+    </div> -->
+
+    <div *ngFor="let itemParent of category_items | keyvalue">
+        <!-- {{itemParent.key}}:{{itemParent.value["title"]}} -->
+            <div *ngFor="let sub_item of itemParent.value['subCategories'] | keyvalue">
+                            <!-- {{sub_item.key}}::{{sub_item.value["title"]}} -->
+                            </div>    
+      </div>
